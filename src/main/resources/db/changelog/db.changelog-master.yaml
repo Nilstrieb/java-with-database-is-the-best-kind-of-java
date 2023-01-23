@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Johanna Doe
+      changes:
+        - createTable:
+            tableName: article
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: text
+                  type: varchar(255)
+  - changeSet:
+      id: 2
+      author: me
+      changes:
+        - modifyDataType:
+            tableName: article
+            columnName: text
+            newDataType: varchar
+  - changeSet:
+      id: 3
+      author: nils
+      changes:
+        - renameTable:
+            oldTableName: article
+            newTableName: articles
+  - changeSet:
+      id: 4
+      author: nils
+      changes:
+        - addColumn:
+            tableName: articles
+            columns:
+              - column:
+                  name: created_ts
+                  type: DATETIME
+                  defaultValue: 2023-01-23
+              - column:
+                  name: version
+                  type: INTEGER
+                  defaultValue: "1"
