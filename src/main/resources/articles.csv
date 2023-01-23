@@ -1,0 +1,9 @@
+id,title,text
+"4a831504-54b9-4f6a-8d53-284a8a8dbbaf","How I migrated my company into bankruptcy with liquibase","My boss told me that we need migrations, so I made one."
+"964d4cb1-60fd-4c7a-a113-73b96ea1d2ff","The 'DROP ALL TABLES' migration; When we found out about GDPR","We liked data, so we stored it"
+"f3c75e2d-f4c3-4490-949e-b2dd47735410","Making DB syntax errors even worse","Because what else would I do on a rainy saturday"
+"abdbfd6f-ae28-4f5d-8ddf-1625b365a821","A database is just a compiler","It compiles, so it must be"
+"cd5cc7c6-ec58-4e6b-a280-2cbc60045145","A compiler is just a database","New research from MIT suggests"
+"c11121fe-6f9b-4f4e-bcdb-29f7a69dddd0","Java Summer","The next generation Java Web Framework"
+"ed3c8120-edb5-4704-a76d-dee307eb8a39","Rewriting Oracle DB in Rust","How we got Rustaceans to buy our overpriced licenses"
+"ff431f4c-42cc-48e1-ac29-692c17793aa6","Backwards migrations","Rolling back to the next state"

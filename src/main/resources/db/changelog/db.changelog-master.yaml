@@ -77,3 +77,23 @@ databaseChangeLog:
                   constraints:
                     foreignKeyName: fk_comment_article
                     references: articles(id)
+  - changeSet:
+      id: 6
+      author: nils
+      changes:
+        - loadData:
+            tableName: articles
+            encoding: UTF-8
+            file: articles.csv
+            quotchar: '""'
+            separator: ","
+  - changeSet:
+      id: 7
+      author: nils
+      changes:
+        - loadData:
+            tableName: comments
+            encoding: UTF-8
+            file: comments.csv
+            quotchar: '""'
+            separator: ","
