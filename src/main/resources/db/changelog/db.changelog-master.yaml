@@ -1,4 +1,8 @@
 databaseChangeLog:
+  # Add a new articles table with three columns, the id, title and content.
+  # The text column has a pretty strict length limitation because we want to
+  # be a successful business and twitter got quite successful with it. Although
+  # we are currently not deleting random microservices.
   - changeSet:
       id: 1
       author: Johanna Doe
@@ -19,6 +23,9 @@ databaseChangeLog:
               - column:
                   name: text
                   type: varchar(255)
+  # Remove the length limitation on the text column. While short messages were our original
+  # business model, the stakeholders have switched their mind (again). We will now be a blogging
+  # service, so we need the long texts for people to write their life backstory in their recipe blogs.
   - changeSet:
       id: 2
       author: me
@@ -27,6 +34,9 @@ databaseChangeLog:
             tableName: article
             columnName: text
             newDataType: varchar
+  # Rename the article table to articles. We intend to have multiple articles in the future so the
+  # name makes more sense. We had a long argument in a meeting about this, see this dead link to what
+  # used to be a confluence page about the discussion for details: <>
   - changeSet:
       id: 3
       author: nils
@@ -34,6 +44,9 @@ databaseChangeLog:
         - renameTable:
             oldTableName: article
             newTableName: articles
+  # Add technical version and created timestamp fields. This will allow us to use optimistic locking,
+  # significantly increasing the performance of our web services. Additionally, we can now know when
+  # bad data was inserted and then blame the correct user for it.
   - changeSet:
       id: 4
       author: nils
@@ -49,6 +62,9 @@ databaseChangeLog:
                   name: version
                   type: INTEGER
                   defaultValue: "1"
+  # Add comments table to add comments to articles. No good blog post is without a comment section where people
+  # can show that they completely missed the point of the article. Comments are limited to a thousand characters
+  # which is enough to express all kinds of bad opinions.
   - changeSet:
       id: 5
       author: nils
@@ -77,6 +93,10 @@ databaseChangeLog:
                   constraints:
                     foreignKeyName: fk_comment_article
                     references: articles(id)
+  # Load test data for the articles. These are a few made up articles to make our platform look
+  # like anyone actually uses it and also make it possible to run automated tests (not that we'd
+  # actually do that though).
+  # IMPORTANT: You should look at the test data, the intern worked very hard on it.
   - changeSet:
       id: 6
       author: nils
@@ -87,6 +107,8 @@ databaseChangeLog:
             file: articles.csv
             quotchar: '""'
             separator: ","
+  # Load test data for the comments. These are not as inappropriate as the comments we expect users
+  # to receive on our platforms to lure authors into thinking they can get constructive feedback on our site.
   - changeSet:
       id: 7
       author: nils
